@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/general"
+            android:icon="@drawable/ic_location_city_black_24dp"
+            android:title="@string/General" />
+
+        <item
+            android:id="@+id/Famous"
+            android:icon="@drawable/iconsmarker"
+            android:title="@string/Famous"  />
+        <item
+            android:id="@+id/preferred"
+            android:icon="@drawable/star_yellow"
+            android:title="@string/preferred" />
+
+    </group>
+
+    <item android:title="@string/communicate">
+        <menu>
+            <item
+                android:id="@+id/feedback"
+                android:icon="@drawable/ic_send_black_24dp"
+                android:title="@string/feedback" />
+            <item
+                android:id="@+id/setting"
+                android:icon="@drawable/iconssettings"
+                android:title="@string/settings" />
+        </menu>
+    </item>
+
+</menu>

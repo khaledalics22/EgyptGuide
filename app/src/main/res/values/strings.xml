@@ -84,4 +84,9 @@
     <string name="phone_no1">01115408275</string>
     <string name="CarioUniversity">cairo university</string>
     <string name="Pictures">Pictures</string>
+    <string name="General">General</string>
+    <string name="Famous">Famous</string>
+    <string name="preferred">Starred</string>
+    <string name="communicate">Communicate</string>
+    <string name="search">Search</string>
 </resources>

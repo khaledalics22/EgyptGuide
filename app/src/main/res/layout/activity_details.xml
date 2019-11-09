@@ -7,49 +7,49 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/sight_frag"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         tools:context=".detail_frag">
 
         <ImageView
-            android:id="@+id/iv_sight_image"
+            android:id="@+id/iv_entity_image"
             android:layout_width="match_parent"
             android:layout_height="@dimen/main_pic_height"
-            android:layout_marginBottom="@dimen/padding_margin_medium"
-            android:contentDescription="@string/sights"
+            android:contentDescription="@string/entity"
             android:scaleType="fitXY"
             android:src="@drawable/m2"
-            app:layout_constraintBottom_toTopOf="@+id/tv_sight_name"
-            app:layout_constraintStart_toStartOf="@+id/tv_sight_name"
+            app:layout_constraintBottom_toTopOf="@+id/tv_entity_name"
+            app:layout_constraintStart_toStartOf="@+id/tv_entity_name"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/star"
+            android:id="@+id/iv_preferred"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_margin_large"
+            android:layout_marginEnd="@dimen/padding_margin_large"
+            android:layout_marginRight="@dimen/padding_margin_large"
             android:contentDescription="@string/star"
             android:scaleType="fitXY"
             android:src="@drawable/star_holo"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_sight_name"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_entity_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.874"
-            app:layout_constraintStart_toEndOf="@+id/tv_sight_name"
-            app:layout_constraintTop_toTopOf="@+id/tv_sight_name" />
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toEndOf="@+id/tv_entity_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_entity_name" />
+
         <TextView
-            android:id="@+id/tv_sight_name"
+            android:id="@+id/tv_entity_name"
             style="@style/titles_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_margin_small"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_margin="@dimen/padding_margin_medium"
             android:text="@string/entity"
             app:layout_constraintBottom_toTopOf="@+id/tv_location"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_sight_image" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_entity_image"
+            tools:layout_editor_absoluteX="8dp" />
+
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
@@ -57,40 +57,58 @@
             android:background="@color/gray_light"
             app:layout_constraintBottom_toTopOf="@+id/textView8"
             app:layout_constraintStart_toStartOf="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/tv_phone" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_work_time" />
 
         <TextView
             android:id="@+id/tv_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding_margin_medium"
-            android:layout_marginLeft="@dimen/padding_margin_medium"
-            android:padding="@dimen/padding_margin_medium"
+            android:padding="@dimen/padding_margin_small"
             android:text="@string/egypt"
-            app:layout_constraintBottom_toTopOf="@+id/view"
-            app:layout_constraintStart_toStartOf="@+id/tv_sight_name"
-            app:layout_constraintTop_toBottomOf="@+id/tv_sight_name" />
+            app:layout_constraintBottom_toTopOf="@+id/tv_phone"
+            app:layout_constraintStart_toStartOf="@+id/tv_entity_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_entity_name" />
 
         <TextView
             android:id="@+id/tv_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding_margin_medium"
-            android:layout_marginLeft="@dimen/padding_margin_medium"
-            android:padding="@dimen/padding_margin_medium"
-            android:text="@string/phone_number"
             android:linksClickable="true"
-            app:layout_constraintBottom_toTopOf="@+id/view"
-            app:layout_constraintStart_toStartOf="@+id/tv_sight_name"
+            android:padding="@dimen/padding_margin_small"
+            android:text="@string/phone_number"
+            app:layout_constraintBottom_toTopOf="@+id/tv_fees"
+            app:layout_constraintStart_toStartOf="@+id/tv_location"
             app:layout_constraintTop_toBottomOf="@+id/tv_location" />
+
+        <TextView
+            android:id="@+id/tv_fees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:linksClickable="true"
+            android:padding="@dimen/padding_margin_small"
+            android:text="@string/fees"
+            app:layout_constraintBottom_toTopOf="@+id/tv_work_time"
+            app:layout_constraintStart_toStartOf="@+id/tv_phone"
+            app:layout_constraintTop_toBottomOf="@+id/tv_phone" />
+
+        <TextView
+            android:id="@+id/tv_work_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:linksClickable="true"
+            android:padding="@dimen/padding_margin_small"
+            android:text="@string/work_time"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/tv_fees"
+            app:layout_constraintTop_toBottomOf="@+id/tv_fees" />
 
         <TextView
             android:id="@+id/textView8"
             style="@style/subtitle_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_margin_small"
-            android:text="@string/contents"
+            android:layout_margin="@dimen/padding_margin_medium"
+            android:text="@string/Pictures"
             app:layout_constraintBottom_toTopOf="@+id/rv_content_pictures"
             app:layout_constraintStart_toStartOf="@+id/rv_content_pictures"
             app:layout_constraintTop_toBottomOf="@+id/view" />
@@ -98,8 +116,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_content_pictures"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_margin_small"
+            android:layout_height="202dp"
+            android:padding="@dimen/padding_margin_medium"
             app:layout_constraintBottom_toTopOf="@+id/textView9"
             app:layout_constraintStart_toStartOf="@+id/textView9"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -109,8 +127,8 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/gray_light"
-            app:layout_constraintBottom_toTopOf="@+id/video_sight"
-            app:layout_constraintStart_toStartOf="@+id/video_sight"
+            app:layout_constraintBottom_toTopOf="@+id/btn_take_me_there"
+            app:layout_constraintStart_toStartOf="@+id/btn_take_me_there"
             app:layout_constraintTop_toBottomOf="@+id/tv_details" />
 
         <TextView
@@ -118,23 +136,11 @@
             style="@style/subtitle_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_margin_small"
+            android:layout_margin="@dimen/padding_margin_medium"
             android:text="@string/details"
             app:layout_constraintBottom_toTopOf="@+id/view2"
             app:layout_constraintStart_toStartOf="@+id/view2"
             app:layout_constraintTop_toBottomOf="@+id/rv_content_pictures" />
-
-        <VideoView
-            android:id="@+id/video_sight"
-            android:layout_width="match_parent"
-            android:layout_height="176dp"
-            android:layout_centerInParent="true"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="@dimen/padding_margin_medium"
-            app:layout_constraintBottom_toTopOf="@+id/btn_take_me_there_sight"
-            app:layout_constraintStart_toStartOf="@+id/btn_take_me_there_sight"
-            app:layout_constraintTop_toBottomOf="@+id/view3" />
 
         <TextView
             android:id="@+id/tv_details"
@@ -144,6 +150,7 @@
             android:layout_margin="@dimen/padding_margin_small"
             android:background="@color/gray_light_pure"
             android:maxLines="5"
+            android:padding="@dimen/padding_margin_medium"
             android:textColor="@color/bright_black"
             app:layout_constraintBottom_toTopOf="@+id/view3"
             app:layout_constraintStart_toStartOf="@+id/view3"
@@ -153,26 +160,25 @@
             android:id="@+id/view2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_margin="@dimen/padding_margin_small"
             android:background="@color/gray_light"
             app:layout_constraintBottom_toTopOf="@+id/tv_details"
             app:layout_constraintStart_toStartOf="@+id/tv_details"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/read_more_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_margin_small"
-            android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
             android:contentDescription="@string/read_more_arrow"
+            android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
             app:layout_constraintBottom_toBottomOf="@+id/view3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_details" />
 
         <Button
-            android:id="@+id/btn_take_me_there_sight"
+            android:id="@+id/btn_take_me_there"
             style="@style/button_text_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -180,9 +186,8 @@
             android:background="@drawable/button_"
             android:text="@string/take_me"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/video_sight" />
+            app:layout_constraintTop_toBottomOf="@+id/view3"
+            tools:layout_editor_absoluteX="7dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,9 +40,9 @@ public class FragmentAdapter extends FragmentPagerAdapter {
             return new Entertainments();
         else if (position == 3)
             return new Banks();
-        else if (position == 4 )
+        else if (position == 4)
             return new Universities();
         else
-            return  null;
+            return null;
     }
 }

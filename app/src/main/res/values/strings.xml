@@ -63,6 +63,14 @@
     <string name="location">cairo, Egypt</string>
     <string name="bank_masr">Bank Masr</string>
     <string name="bank_masr_desc">bank masr for in egypt</string>
+    <string name="Cinema_star">cinema star</string>
+    <string name="cinema_tube">cinema tube</string>
+    <string name="zoo">the ZOO</string>
+    <string name="dream_park">dream_park</string>
+    <string name="entity_description">we are so happy to have you at out place, you will have much fun</string>
+    <string name="current_entity">current_entity</string>
+    <string name="ENTITY_TYPE">ENTITY_TYPE</string>
+    <string name="work_time">From %d am To  %d pm</string>
 
     <string-array name="Fragments_names">
         <item>Hotels</item>
@@ -71,5 +79,9 @@
         <item>Banks</item>
         <item>Universities</item>
     </string-array>
-
+    <string name="price_per_day">%d $ / day</string>
+    <string name="fees">%dK $ / year</string>
+    <string name="phone_no1">01115408275</string>
+    <string name="CarioUniversity">cairo university</string>
+    <string name="Pictures">Pictures</string>
 </resources>

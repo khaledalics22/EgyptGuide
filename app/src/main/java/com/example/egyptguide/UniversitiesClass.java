@@ -1,58 +1,20 @@
 package com.example.egyptguide;
 
-public class UniversitiesClass {
-    private String mName;
-    private String mDescription;
+import java.io.Serializable;
+
+public class UniversitiesClass extends Entity implements Serializable {
     private int mFees;
-    private String mLocation;
-    private int [] mImageResources;
 
-    public UniversitiesClass(String mName, String mDescription, int mPricePerDay, String mLocation, int[] mImageResources) {
-        this.mName = mName;
-        this.mDescription = mDescription;
-        this.mFees = mPricePerDay;
-        this.mLocation = mLocation;
-        this.mImageResources = mImageResources;
+    public UniversitiesClass(String mName, String mDescription, int fees, String mLocation, int[] mImageResources, String workTime, String phone) {
+        super(mName, mDescription, mLocation, mImageResources, workTime, phone);
+        this.mFees = fees;
     }
 
-    public void setmDescription(String mDescription) {
-
-        this.mDescription = mDescription;
-    }
-
-    public void setmPricePerDay(int mPricePerDay) {
+    public void setmFees(int mPricePerDay) {
         this.mFees = mPricePerDay;
     }
 
-    public void setmLocation(String mLocation) {
-        this.mLocation = mLocation;
-    }
-
-    public void setmImageResources(int[] mImageResources) {
-        this.mImageResources = mImageResources;
-    }
-
-    public void setmName(String mName) {
-        this.mName = mName;
-    }
-
-    public String getmName() {
-        return mName;
-    }
-
-    public String getmDescription() {
-        return mDescription;
-    }
-
-    public int getmPricePerDay() {
+    public int getmFees() {
         return mFees;
-    }
-
-    public String getmLocation() {
-        return mLocation;
-    }
-
-    public int[] getmImageResources() {
-        return mImageResources;
     }
 }

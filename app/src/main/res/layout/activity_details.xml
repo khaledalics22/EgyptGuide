@@ -12,70 +12,91 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".detail_frag">
-        <!-- TODO: Update blank fragment layout -->
+
         <ImageView
             android:id="@+id/iv_sight_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginBottom="8dp"
+            android:layout_height="@dimen/main_pic_height"
+            android:layout_marginBottom="@dimen/padding_margin_medium"
             android:contentDescription="@string/sights"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:src="@drawable/m2"
             app:layout_constraintBottom_toTopOf="@+id/tv_sight_name"
             app:layout_constraintStart_toStartOf="@+id/tv_sight_name"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_margin_large"
+            android:contentDescription="@string/star"
+            android:scaleType="fitXY"
+            android:src="@drawable/star_holo"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_sight_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.874"
+            app:layout_constraintStart_toEndOf="@+id/tv_sight_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_sight_name" />
         <TextView
             android:id="@+id/tv_sight_name"
+            style="@style/titles_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_margin_small"
-            android:text="Sight Name"
-            android:textColor="@android:color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="@+id/textView"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="@string/entity"
+            app:layout_constraintBottom_toTopOf="@+id/tv_location"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_sight_image" />
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_light"
+            app:layout_constraintBottom_toTopOf="@+id/textView8"
+            app:layout_constraintStart_toStartOf="@+id/textView8"
+            app:layout_constraintTop_toBottomOf="@+id/tv_phone" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_margin_small"
-            android:padding="@dimen/padding_margin_small"
-            android:text="Egypt, "
+            android:layout_marginStart="@dimen/padding_margin_medium"
+            android:layout_marginLeft="@dimen/padding_margin_medium"
+            android:padding="@dimen/padding_margin_medium"
+            android:text="@string/egypt"
             app:layout_constraintBottom_toTopOf="@+id/view"
-            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/tv_sight_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_sight_name" />
 
         <TextView
-            android:id="@+id/tv_city_of_sight"
+            android:id="@+id/tv_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_margin_small"
-            android:text="Cairo"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="@+id/textView"
-            app:layout_constraintVertical_bias="1.0" />
+            android:layout_marginStart="@dimen/padding_margin_medium"
+            android:layout_marginLeft="@dimen/padding_margin_medium"
+            android:padding="@dimen/padding_margin_medium"
+            android:text="@string/phone_number"
+            android:linksClickable="true"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/tv_sight_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_location" />
 
         <TextView
             android:id="@+id/textView8"
+            style="@style/subtitle_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_margin_small"
             android:text="@string/contents"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/recycler_view_sight"
-            app:layout_constraintStart_toStartOf="@+id/recycler_view_sight"
+            app:layout_constraintBottom_toTopOf="@+id/rv_content_pictures"
+            app:layout_constraintStart_toStartOf="@+id/rv_content_pictures"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_sight"
+            android:id="@+id/rv_content_pictures"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_margin_small"
@@ -90,18 +111,18 @@
             android:background="@color/gray_light"
             app:layout_constraintBottom_toTopOf="@+id/video_sight"
             app:layout_constraintStart_toStartOf="@+id/video_sight"
-            app:layout_constraintTop_toBottomOf="@+id/tv_sight_details" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_details" />
 
         <TextView
             android:id="@+id/textView9"
+            style="@style/subtitle_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_margin_small"
             android:text="@string/details"
-            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/view2"
             app:layout_constraintStart_toStartOf="@+id/view2"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_view_sight" />
+            app:layout_constraintTop_toBottomOf="@+id/rv_content_pictures" />
 
         <VideoView
             android:id="@+id/video_sight"
@@ -116,14 +137,14 @@
             app:layout_constraintTop_toBottomOf="@+id/view3" />
 
         <TextView
-            android:id="@+id/tv_sight_details"
+            android:id="@+id/tv_details"
+            style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_margin_small"
             android:background="@color/gray_light_pure"
             android:maxLines="5"
             android:textColor="@color/bright_black"
-            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/view3"
             app:layout_constraintStart_toStartOf="@+id/view3"
             app:layout_constraintTop_toBottomOf="@+id/view2" />
@@ -134,12 +155,12 @@
             android:layout_height="1dp"
             android:layout_margin="@dimen/padding_margin_small"
             android:background="@color/gray_light"
-            app:layout_constraintBottom_toTopOf="@+id/tv_sight_details"
-            app:layout_constraintStart_toStartOf="@+id/tv_sight_details"
+            app:layout_constraintBottom_toTopOf="@+id/tv_details"
+            app:layout_constraintStart_toStartOf="@+id/tv_details"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <ImageView
-            android:id="@+id/show_less_sight"
+            android:id="@+id/read_more_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_margin_small"
@@ -148,30 +169,21 @@
             app:layout_constraintBottom_toBottomOf="@+id/view3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_sight_details" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_details" />
 
         <Button
             android:id="@+id/btn_take_me_there_sight"
+            style="@style/button_text_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_margin_medium"
             android:background="@drawable/button_"
             android:text="@string/take_me"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/video_sight" />
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray_light"
-            app:layout_constraintBottom_toTopOf="@+id/textView8"
-            app:layout_constraintStart_toStartOf="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

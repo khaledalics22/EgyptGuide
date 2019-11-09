@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Applicationj9</string>
+    <string name="app_name">Egypt Guide</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -47,6 +47,22 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sight_name">Sight Name</string>
+    <string name="egypt">Egypt,</string>
+    <string name="cairo">Cairo</string>
+    <string name="entity">entity</string>
+    <string name="distance">distance</string>
+    <string name="city_name">city_name</string>
+    <string name="price">price</string>
+    <string name="_150">50$/day</string>
+    <string name="entity_image">entity_image</string>
+    <string name="phone_number">phone_number</string>
+    <string name="star">star</string>
+    <string name="star_hotel">Star Hotel</string>
+    <string name="hotel_description">Five star hotel, we have a very good rooms and restaurants</string>
+    <string name="location">cairo, Egypt</string>
+    <string name="bank_masr">Bank Masr</string>
+    <string name="bank_masr_desc">bank masr for in egypt</string>
 
     <string-array name="Fragments_names">
         <item>Hotels</item>

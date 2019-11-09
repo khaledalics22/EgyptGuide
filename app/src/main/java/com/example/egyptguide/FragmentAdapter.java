@@ -37,7 +37,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
         else if (position == 1)
             return new Restaurants();
         else if (position == 2)
-            return new Entertainment();
+            return new Entertainments();
         else if (position == 3)
             return new Banks();
         else if (position == 4 )

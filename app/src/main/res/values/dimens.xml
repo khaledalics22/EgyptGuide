@@ -6,10 +6,11 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="corner_rad">16dp</dimen>
-    <dimen name="city_image_height">100dp</dimen>
+    <dimen name="city_image_height">55dp</dimen>
     <dimen name="padding_margin_small">5dp</dimen>
     <dimen name="padding_margin_medium">7dp</dimen>
     <dimen name="padding_margin_large">15dp</dimen>
+    <dimen name="main_pic_height">200dp</dimen>
 
 
 </resources>

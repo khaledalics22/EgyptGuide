@@ -22,6 +22,9 @@ import java.util.ArrayList;
  */
 public class Hotels extends Fragment implements HotelAdapter.onClickListItem {
 
+   private HotelAdapter hotelAdapter;
+    public static ArrayList<HotelClass> hotels;
+
     @Override
     public void onClickListItemHandler(int pos) {
         getActivity().startActivity(
@@ -31,9 +34,6 @@ public class Hotels extends Fragment implements HotelAdapter.onClickListItem {
         );
         Toast.makeText(getContext(), getString(R.string.details), Toast.LENGTH_SHORT).show();
     }
-
-    private ArrayList<HotelClass> hotels;
-
     public Hotels() {
         // Required empty public constructor
     }
@@ -54,6 +54,7 @@ public class Hotels extends Fragment implements HotelAdapter.onClickListItem {
                 new int[]{R.drawable.ic_location_city_black_24dp, R.drawable.ic_explore_black_24dp},
                 getContext().getString(R.string.work_time, 9, 4),
                 getContext().getString(R.string.phone_no1)));
+
         hotels.add(new HotelClass(getContext().getString(R.string.star_hotel),
                 getContext().getString(R.string.hotel_description),
                 20,
@@ -89,6 +90,10 @@ public class Hotels extends Fragment implements HotelAdapter.onClickListItem {
                 new int[]{R.drawable.ic_location_city_black_24dp, R.drawable.ic_explore_black_24dp},
                 getContext().getString(R.string.work_time, 9, 4),
                 getContext().getString(R.string.phone_no1)));
+        for (int i=0 ; i<hotels.size()/2;i++)
+        {
+            hotels.get(i).setmIsPreferred(true);
+        }
     }
 
     @Nullable
@@ -97,15 +102,36 @@ public class Hotels extends Fragment implements HotelAdapter.onClickListItem {
         View rootView = inflater.inflate(R.layout.fragment_hotels, container, false);
         RecyclerView recyclerView;
         RecyclerView.LayoutManager layoutManager;
-        HotelAdapter recyclerViewAdapter;
         hotels = new ArrayList<HotelClass>();
         loadData();
+
         recyclerView = rootView.findViewById(R.id.rv_hotels);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        recyclerViewAdapter = new HotelAdapter(this, getContext(), hotels);
-        recyclerView.setAdapter(recyclerViewAdapter);
+        hotelAdapter = new HotelAdapter(this, getContext(), hotels);
+        recyclerView.setAdapter(hotelAdapter);
         return rootView;
     }
+
+    public static void loadSSpecial(int type) {
+        switch (type) {
+            case MainActivity.STARRED:
+                for (int i = 0; i < hotels.size(); i++) {
+                    if (!hotels.get(i).ismIsPreferred()) {
+                        hotels.remove(hotels.get(i));
+                    }
+                }
+                break;
+            case MainActivity.FAMOUS:
+                for (int i = 0; i < hotels.size(); i++) {
+                    if (!hotels.get(i).isFamous()) {
+                        hotels.remove(hotels.get(i));
+                    }
+                }
+                break;
+        }
+    }
+
+
 }

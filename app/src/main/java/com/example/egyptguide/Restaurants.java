@@ -43,7 +43,19 @@ public class Restaurants extends Fragment implements RESAdapter.onClickListItem 
 
     private void loadData() {
         //String mName, String mDescription, int mPricePerDay, String mLocation, int[] mImageResources
-        mRestaurants.add(new RestaurantClass(getContext().getString(R.string.CarioUniversity),
+        mRestaurants.add(new RestaurantClass(getContext().getString(R.string.restaurant),
+                getContext().getString(R.string.hotel_description),
+                getContext().getString(R.string.location),
+                new int[]{R.drawable.ic_location_city_black_24dp, R.drawable.ic_explore_black_24dp},
+                getContext().getString(R.string.work_time, 10, 9),
+                getContext().getResources().getString(R.string.phone_no1)));
+        mRestaurants.add(new RestaurantClass(getContext().getString(R.string.restaurant),
+                getContext().getString(R.string.hotel_description),
+                getContext().getString(R.string.location),
+                new int[]{R.drawable.ic_location_city_black_24dp, R.drawable.ic_explore_black_24dp},
+                getContext().getString(R.string.work_time, 10, 9),
+                getContext().getResources().getString(R.string.phone_no1)));
+        mRestaurants.add(new RestaurantClass(getContext().getString(R.string.restaurant),
                 getContext().getString(R.string.hotel_description),
                 getContext().getString(R.string.location),
                 new int[]{R.drawable.ic_location_city_black_24dp, R.drawable.ic_explore_black_24dp},
@@ -79,18 +91,15 @@ public class Restaurants extends Fragment implements RESAdapter.onClickListItem 
                 new int[]{R.drawable.ic_location_city_black_24dp, R.drawable.ic_explore_black_24dp},
                 getContext().getString(R.string.work_time, 10, 9),
                 getContext().getResources().getString(R.string.phone_no1)));
-        mRestaurants.add(new RestaurantClass(getContext().getString(R.string.CarioUniversity),
-                getContext().getString(R.string.hotel_description),
-                getContext().getString(R.string.location),
-                new int[]{R.drawable.ic_location_city_black_24dp, R.drawable.ic_explore_black_24dp},
-                getContext().getString(R.string.work_time, 10, 9),
-                getContext().getResources().getString(R.string.phone_no1)));
-        mRestaurants.add(new RestaurantClass(getContext().getString(R.string.CarioUniversity),
-                getContext().getString(R.string.hotel_description),
-                getContext().getString(R.string.location),
-                new int[]{R.drawable.ic_location_city_black_24dp, R.drawable.ic_explore_black_24dp},
-                getContext().getString(R.string.work_time, 10, 9),
-                getContext().getResources().getString(R.string.phone_no1)));
+        for (int i =0; i< mRestaurants.size()/2;i++)
+        {
+            mRestaurants.get(i).setmIsPreferred(true);
+        }
+        for (int i =mRestaurants.size()/2+1; i< mRestaurants.size();i++)
+        {
+            mRestaurants.get(i).setFamous(true);
+        }
+
     }
 
     @Nullable
@@ -107,4 +116,5 @@ public class Restaurants extends Fragment implements RESAdapter.onClickListItem 
         recyclerView.setAdapter(recyclerViewAdapter);
         return rootView;
     }
+
 }

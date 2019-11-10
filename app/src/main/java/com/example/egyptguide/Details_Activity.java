@@ -1,5 +1,7 @@
 package com.example.egyptguide;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +23,20 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
     public final static int BANK = 2;
     public final static int HOTEL = 3;
     public final static int RESTAURANT = 4;
+
     private boolean shown = false;
+    private TextView tv_EntityName;
+    private TextView tv_Location;
+    private ImageView iv_main_image;
+    private TextView tv_phone;
+    private TextView tv_fees;
+    private TextView tv_workTime;
+    private TextView tv_details;
+    private ImageView ivPreferred;
+    private ImageButton iBtn_reamMore;
+    private Button btnOpenMap;
+    private Entity currEntity;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,62 +45,13 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle(R.string.details);
         }
-        final ImageView ivPreferred = findViewById(R.id.iv_preferred);
-        final ImageButton iBtn_reamMore = findViewById(R.id.read_more_arrow);
-        Button btnOpenMap = findViewById(R.id.btn_take_me_there);
-        TextView tv_EntityName = findViewById(R.id.tv_entity_name);
-        TextView tv_Location = findViewById(R.id.tv_location);
-        ImageView iv_main_image = findViewById(R.id.iv_entity_image);
-        TextView tv_phone = findViewById(R.id.tv_phone);
-        TextView tv_fees = findViewById(R.id.tv_fees);
-        TextView tv_workTime = findViewById(R.id.tv_work_time);
-        final TextView tv_details = findViewById(R.id.tv_details);
-        final Entity currEntity = (Entity) getIntent().getSerializableExtra(getString(R.string.current_entity));
-        RecyclerView recyclerView = findViewById(R.id.rv_content_pictures);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutManager);
-        ContentAdapter contentAdapter = new ContentAdapter(this, currEntity.getmImageResources());
-        recyclerView.setAdapter(contentAdapter);
-        iv_main_image.setImageResource(currEntity.getmImageResources()[0]);
-        tv_EntityName.setText(currEntity.getmName());
-        tv_Location.setText(currEntity.getmLocation());
-        tv_workTime.setText(currEntity.getmWorkTime());
-        tv_details.setText(currEntity.getmDescription());
-        tv_phone.setText(currEntity.getPhoneNumber());
-        if (currEntity.ismIsPreferred()) {
-            ivPreferred.setImageResource(R.drawable.star_yellow);
-        } else {
-            ivPreferred.setImageResource(R.drawable.star_holo);
-        }
-        Entity CurrEntity = (Entity) getIntent().getSerializableExtra(getString(R.string.current_entity));
-        ivPreferred.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (currEntity.ismIsPreferred()) {
-                    ivPreferred.setImageResource(R.drawable.star_holo);
-                    currEntity.setmIsPreferred(false);
-                } else {
-                    ivPreferred.setImageResource(R.drawable.star_yellow);
-                    currEntity.setmIsPreferred(true);
-                }
-            }
-        });
-        iBtn_reamMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!shown) {
-                    iBtn_reamMore.setImageResource(R.drawable.ic_keyboard_arrow_up_black_24dp);
-                    tv_details.setMaxLines(Integer.MAX_VALUE);
-                    shown = true;
-                } else {
-                    iBtn_reamMore.setImageResource(R.drawable.ic_keyboard_arrow_down_black_24dp);
-                    tv_details.setMaxLines(R.dimen.minLines);
-                    shown = false;
-                }
-            }
-        });
+        currEntity = (Entity) getIntent().getSerializableExtra(getString(R.string.current_entity));
+        casheViews();
+        setRecyclerView();
+        setListeners();
+        attachViews();
         int TYPE = Integer.parseInt(getIntent().getSerializableExtra(getString(R.string.ENTITY_TYPE)).toString());
         switch (TYPE) {
             case UNIVERSITY: {
@@ -116,5 +82,85 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
                 break;
             }
         }
+    }
+
+    private void setRecyclerView() {
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        ContentAdapter contentAdapter = new ContentAdapter(this, currEntity.getmImageResources());
+        recyclerView.setAdapter(contentAdapter);
+    }
+
+    private void attachViews() {
+        currEntity = (Entity) getIntent().getSerializableExtra(getString(R.string.current_entity));
+        iv_main_image.setImageResource(currEntity.getmImageResources()[0]);
+        tv_EntityName.setText(currEntity.getmName());
+        tv_Location.setText(currEntity.getmLocation());
+        tv_workTime.setText(currEntity.getmWorkTime());
+        tv_details.setText(currEntity.getmDescription());
+        tv_phone.setText(currEntity.getPhoneNumber());
+        if (currEntity.ismIsPreferred()) {
+            ivPreferred.setImageResource(R.drawable.star_yellow);
+        } else {
+            ivPreferred.setImageResource(R.drawable.star_holo);
+        }
+    }
+
+    private void setListeners() {
+        btnOpenMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String EntityName =currEntity.getmName();
+                Intent intent=new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("google.navigation:q="+EntityName+",+Egypt"));
+                if(intent.resolveActivity(getPackageManager())!=null){
+                    startActivity(intent);
+                }
+            }
+        });
+
+        //this is supposed to store the state of the instance in database or the host server
+        ivPreferred.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (currEntity.ismIsPreferred()) {
+                    ivPreferred.setImageResource(R.drawable.star_holo);
+                    currEntity.setmIsPreferred(false);
+                } else {
+                    ivPreferred.setImageResource(R.drawable.star_yellow);
+                    currEntity.setmIsPreferred(true);
+                }
+            }
+        });
+        iBtn_reamMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!shown) {
+                    iBtn_reamMore.setImageResource(R.drawable.ic_keyboard_arrow_up_black_24dp);
+                    tv_details.setMaxLines(Integer.MAX_VALUE);
+                    shown = true;
+                } else {
+                    iBtn_reamMore.setImageResource(R.drawable.ic_keyboard_arrow_down_black_24dp);
+                    tv_details.setMaxLines(R.dimen.minLines);
+                    shown = false;
+                }
+            }
+        });
+    }
+
+    private void casheViews() {
+        tv_EntityName = findViewById(R.id.tv_entity_name);
+        tv_Location = findViewById(R.id.tv_location);
+        iv_main_image = findViewById(R.id.iv_entity_image);
+        tv_phone = findViewById(R.id.tv_phone);
+        tv_fees = findViewById(R.id.tv_fees);
+        tv_workTime = findViewById(R.id.tv_work_time);
+        tv_details = findViewById(R.id.tv_details);
+        ivPreferred = findViewById(R.id.iv_preferred);
+        iBtn_reamMore = findViewById(R.id.read_more_arrow);
+        btnOpenMap = findViewById(R.id.btn_take_me_there);
+        recyclerView = findViewById(R.id.rv_content_pictures);
+
     }
 }

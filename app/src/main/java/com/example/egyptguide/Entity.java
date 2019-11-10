@@ -10,6 +10,15 @@ public class Entity implements Serializable {
     private String mWorkTime;
     private boolean mIsPreferred = false;
     private String phoneNumber;
+    private boolean isFamous=false;
+
+
+    public boolean isFamous() {
+        return isFamous;
+    }
+    public void setFamous(boolean famous) {
+        isFamous = famous;
+    }
 
     public Entity(String mName, String mDescription, String mLocation, int[] mImageResources, String mWorkTime, String phoneNumber) {
         this.mName = mName;

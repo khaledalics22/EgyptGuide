@@ -70,6 +70,11 @@ public class Entertainments extends Fragment implements EnterainmentAdapter.onCl
                 new int[]{R.drawable.ic_location_city_black_24dp, R.drawable.ic_explore_black_24dp},
                 getContext().getResources().getString(R.string.work_time, 9, 6),
                 getContext().getResources().getString(R.string.phone_no1)));
+
+        for (int i =0; i< entertainments.size()/2;i++)
+        {
+            entertainments.get(i).setFamous(true);
+        }
     }
 
     @Nullable

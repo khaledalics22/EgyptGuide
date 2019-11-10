@@ -15,6 +15,5 @@
         android:layout_width="@dimen/conetent_image_width"
         android:layout_height="@dimen/content_image_height"
         android:layout_margin="@dimen/padding_margin_small"
-        android:scaleType="fitXY"
-        android:src="@drawable/m1" />
+        android:scaleType="fitXY" />
 </androidx.cardview.widget.CardView>

@@ -22,7 +22,6 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.ViewHolder> {
     public BankAdapter(onClickListItem context, ArrayList<BankClass> contents) {
         this.Restaurants = contents;
         clickListItem = (onClickListItem) context;
-
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -30,7 +29,6 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.ViewHolder> {
         private TextView tvLocation;
         private TextView tvName;
         private TextView tvFees;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivEntity = itemView.findViewById(R.id.iv_entity_icon);

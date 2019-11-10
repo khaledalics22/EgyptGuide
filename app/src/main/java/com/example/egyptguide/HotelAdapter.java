@@ -21,7 +21,6 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
         void onClickListItemHandler(int pos);
     }
 
-
     public HotelAdapter(onClickListItem listener, Context context, ArrayList<HotelClass> contents) {
         this.Hotels = contents;
         clickListItem = listener;

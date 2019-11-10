@@ -29,15 +29,13 @@ public class Entertainments extends Fragment implements EnterainmentAdapter.onCl
                 new Intent(getContext(), Details_Activity.class)
                         .putExtra(getString(R.string.current_entity), entertainments.get(pos))
                         .putExtra(getString(R.string.ENTITY_TYPE), MainActivity.ENTERTAINMENT)
-                        .putExtra(getString(R.string.ENTITY_POS),pos)
+                        .putExtra(getString(R.string.ENTITY_POS), pos)
 
         );
         Toast.makeText(getContext(), getString(R.string.details), Toast.LENGTH_SHORT).show();
     }
 
-
-    public Entertainments() {
-        // Required empty public constructor
+    public Entertainments() {// Required empty public constructor
     }
 
     private void loadData() {

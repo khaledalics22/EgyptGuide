@@ -18,13 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.io.Serializable;
 
 public class Details_Activity extends AppCompatActivity implements Serializable {
-
     public final static int UNIVERSITY = 0;
     public final static int ENTERTAINMENT = 1;
     public final static int BANK = 2;
     public final static int HOTEL = 3;
     public final static int RESTAURANT = 4;
-
     private boolean shown = false;
     private TextView tv_EntityName;
     private TextView tv_Location;
@@ -66,7 +64,7 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
                 ivPreferred.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (currEntity.ismIsPreferred()) {
+                        if (changeable.ismIsPreferred()) {
                             ivPreferred.setImageResource(R.drawable.star_holo);
                             changeable.setmIsPreferred(false);
                             Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
@@ -88,7 +86,7 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
                 ivPreferred.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (currEntity.ismIsPreferred()) {
+                        if (changeable.ismIsPreferred()) {
                             ivPreferred.setImageResource(R.drawable.star_holo);
                             changeable.setmIsPreferred(false);
                             Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
@@ -110,7 +108,7 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
                 ivPreferred.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (currEntity.ismIsPreferred()) {
+                        if (changeable.ismIsPreferred()) {
                             ivPreferred.setImageResource(R.drawable.star_holo);
                             changeable.setmIsPreferred(false);
                             Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
@@ -132,7 +130,7 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
                 ivPreferred.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (currEntity.ismIsPreferred()) {
+                        if (changeable.ismIsPreferred()) {
                             ivPreferred.setImageResource(R.drawable.star_holo);
                             changeable.setmIsPreferred(false);
                             Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
@@ -156,7 +154,7 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
                 ivPreferred.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (currEntity.ismIsPreferred()) {
+                        if (changeable.ismIsPreferred()) {
                             ivPreferred.setImageResource(R.drawable.star_holo);
                             changeable.setmIsPreferred(false);
                             Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
@@ -208,8 +206,6 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
             }
         });
 
-        //this is supposed to store the state of the instance in database or the host server
-
         iBtn_reamMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -238,7 +234,5 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
         iBtn_reamMore = findViewById(R.id.read_more_arrow);
         btnOpenMap = findViewById(R.id.btn_take_me_there);
         recyclerView = findViewById(R.id.rv_content_pictures);
-
     }
-
 }

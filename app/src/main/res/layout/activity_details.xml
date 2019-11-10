@@ -17,7 +17,7 @@
             android:layout_height="@dimen/main_pic_height"
             android:contentDescription="@string/entity"
             android:scaleType="fitXY"
-            android:src="@drawable/m2"
+            android:src="@drawable/drawererimage"
             app:layout_constraintBottom_toTopOf="@+id/tv_entity_name"
             app:layout_constraintStart_toStartOf="@+id/tv_entity_name"
             app:layout_constraintTop_toTopOf="parent" />

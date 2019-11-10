@@ -29,9 +29,7 @@ public class Restaurants extends Fragment implements RESAdapter.onClickListItem 
                 new Intent(getContext(), Details_Activity.class)
                         .putExtra(getString(R.string.current_entity), mRestaurants.get(pos))
                         .putExtra(getString(R.string.ENTITY_TYPE), MainActivity.RESTAURANT)
-                        .putExtra(getString(R.string.ENTITY_POS),pos)
-
-        );
+                        .putExtra(getString(R.string.ENTITY_POS), pos));
         Toast.makeText(getContext(), getString(R.string.details), Toast.LENGTH_SHORT).show();
     }
 
@@ -90,7 +88,6 @@ public class Restaurants extends Fragment implements RESAdapter.onClickListItem 
                 new int[]{R.drawable.ic_location_city_black_24dp, R.drawable.ic_explore_black_24dp},
                 getContext().getString(R.string.work_time, 10, 9),
                 getContext().getResources().getString(R.string.phone_no1)));
-
     }
 
     @Nullable

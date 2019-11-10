@@ -24,8 +24,7 @@ public class Universities extends Fragment implements UniversitiesAdapter.onClic
 
     public static ArrayList<UniversitiesClass> univerisities;
 
-    public Universities() {
-        // Required empty public constructor
+    public Universities() {// Required empty public constructor
     }
 
     @Override
@@ -34,9 +33,7 @@ public class Universities extends Fragment implements UniversitiesAdapter.onClic
                 new Intent(getContext(), Details_Activity.class)
                         .putExtra(getString(R.string.current_entity), univerisities.get(pos))
                         .putExtra(getString(R.string.ENTITY_TYPE), MainActivity.UNIVERSITY)
-                        .putExtra(getString(R.string.ENTITY_POS),pos)
-
-        );
+                        .putExtra(getString(R.string.ENTITY_POS), pos));
         Toast.makeText(getContext(), getString(R.string.details), Toast.LENGTH_SHORT).show();
     }
 

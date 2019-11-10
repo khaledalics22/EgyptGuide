@@ -3,10 +3,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="settings">Settings</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
@@ -15,22 +13,18 @@
     <string name="menu_send">Send</string>
     <string name="details">Details</string>
     <string name="caption">here, is the caption</string>
-
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
-
     <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
     <string name="reply_title">Default reply action</string>
-
     <!-- Sync Preferences -->
     <string name="sync_title">Sync email periodically</string>
     <string name="attachment_title">Download incoming attachments</string>
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
-
     <string name="have_problem">I have a problem with: </string>
     <string name="feedback">Feedback</string>
     <string name="cities">Cities</string>
@@ -44,7 +38,6 @@
     <string name="contents">Contents</string>
     <string name="comment">Comment</string>
     <string name="read_more_arrow">Read_more_arrow</string>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sight_name">Sight Name</string>
@@ -72,7 +65,6 @@
     <string name="current_entity">current_entity</string>
     <string name="ENTITY_TYPE">ENTITY_TYPE</string>
     <string name="work_time">From %d am To  %d pm</string>
-
     <string-array name="Fragments_names">
         <item>Hotels</item>
         <item>Restaurants</item>
@@ -93,4 +85,5 @@
     <string name="ENTITY_POS">ENTITY_POS</string>
     <string name="star_removed">star removed</string>
     <string name="starred">Starred</string>
+    <string name="egypt_guide">E G Y P T GUIDE</string>
 </resources>

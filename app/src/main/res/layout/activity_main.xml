@@ -7,29 +7,30 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".MainActivity">
         <!-- TODO change it to dimen-->
-    <include
-        layout="@layout/search_toolbar"/>
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
-        style="@style/tab_layout_style"
-        android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        app:tabSelectedTextColor="@color/colorAccent"
-        app:tabTextColor="@android:color/white" />
+        <include layout="@layout/main_toolbar" />
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            style="@style/tab_layout_style"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabTextColor="@android:color/white" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</LinearLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!" />
+    </LinearLayout>
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"

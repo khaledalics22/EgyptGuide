@@ -21,10 +21,8 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class Universities extends Fragment implements UniversitiesAdapter.onClickListItem {
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
-    private UniversitiesAdapter recyclerViewAdapter;
-    private ArrayList<UniversitiesClass> univerisities;
+
+    public static ArrayList<UniversitiesClass> univerisities;
 
     public Universities() {
         // Required empty public constructor
@@ -36,6 +34,8 @@ public class Universities extends Fragment implements UniversitiesAdapter.onClic
                 new Intent(getContext(), Details_Activity.class)
                         .putExtra(getString(R.string.current_entity), univerisities.get(pos))
                         .putExtra(getString(R.string.ENTITY_TYPE), MainActivity.UNIVERSITY)
+                        .putExtra(getString(R.string.ENTITY_POS),pos)
+
         );
         Toast.makeText(getContext(), getString(R.string.details), Toast.LENGTH_SHORT).show();
     }
@@ -105,8 +105,13 @@ public class Universities extends Fragment implements UniversitiesAdapter.onClic
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_hotels, container, false);
-        univerisities = new ArrayList<UniversitiesClass>();
-        loadData();
+        RecyclerView recyclerView;
+        RecyclerView.LayoutManager layoutManager;
+        UniversitiesAdapter recyclerViewAdapter;
+        if (univerisities == null) {
+            univerisities = new ArrayList<UniversitiesClass>();
+            loadData();
+        }
         recyclerView = rootView.findViewById(R.id.rv_hotels);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);

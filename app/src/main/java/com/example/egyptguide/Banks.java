@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class Banks extends Fragment implements BankAdapter.onClickListItem {
 
 
-    private ArrayList<BankClass> Banks;
+    public static ArrayList<BankClass> Banks;
 
     public Banks() {
         // Required empty public constructor
@@ -36,6 +36,7 @@ public class Banks extends Fragment implements BankAdapter.onClickListItem {
                 new Intent(getContext(), Details_Activity.class)
                         .putExtra(getString(R.string.current_entity), Banks.get(pos))
                         .putExtra(getString(R.string.ENTITY_TYPE), MainActivity.BANK)
+                        .putExtra(getString(R.string.ENTITY_POS),pos)
         );
         Toast.makeText(getContext(), getString(R.string.details), Toast.LENGTH_SHORT).show();
 
@@ -58,8 +59,10 @@ public class Banks extends Fragment implements BankAdapter.onClickListItem {
         RecyclerView recyclerView;
         RecyclerView.LayoutManager layoutManager;
         BankAdapter bankAdapter;
-        Banks = new ArrayList<BankClass>();
-        loadData();
+        if (Banks == null) {
+            Banks = new ArrayList<BankClass>();
+            loadData();
+        }
         recyclerView = rootView.findViewById(R.id.rv_hotels);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);

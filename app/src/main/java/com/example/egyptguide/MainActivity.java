@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public final static int RESTAURANT = 4;
     public final static int FAMOUS = 5;
     public final static int STARRED = 6;
-    public final static int GENERAL = 7;
     private ViewPager viewPager;
 
     @Override
@@ -78,5 +77,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             default:
                 return false;
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        try {
+            viewPager.getAdapter().notifyDataSetChanged();
+
+        }catch (Exception e){}
     }
 }

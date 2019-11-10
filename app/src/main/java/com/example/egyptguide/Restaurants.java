@@ -21,6 +21,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class Restaurants extends Fragment implements RESAdapter.onClickListItem {
+    public static ArrayList<RestaurantClass> mRestaurants;
 
     @Override
     public void onClickListItemHandler(int pos) {
@@ -28,14 +29,12 @@ public class Restaurants extends Fragment implements RESAdapter.onClickListItem 
                 new Intent(getContext(), Details_Activity.class)
                         .putExtra(getString(R.string.current_entity), mRestaurants.get(pos))
                         .putExtra(getString(R.string.ENTITY_TYPE), MainActivity.RESTAURANT)
+                        .putExtra(getString(R.string.ENTITY_POS),pos)
+
         );
         Toast.makeText(getContext(), getString(R.string.details), Toast.LENGTH_SHORT).show();
     }
 
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
-    private RESAdapter recyclerViewAdapter;
-    private ArrayList<RestaurantClass> mRestaurants;
 
     public Restaurants() {
         // Required empty public constructor
@@ -91,14 +90,6 @@ public class Restaurants extends Fragment implements RESAdapter.onClickListItem 
                 new int[]{R.drawable.ic_location_city_black_24dp, R.drawable.ic_explore_black_24dp},
                 getContext().getString(R.string.work_time, 10, 9),
                 getContext().getResources().getString(R.string.phone_no1)));
-        for (int i =0; i< mRestaurants.size()/2;i++)
-        {
-            mRestaurants.get(i).setmIsPreferred(true);
-        }
-        for (int i =mRestaurants.size()/2+1; i< mRestaurants.size();i++)
-        {
-            mRestaurants.get(i).setFamous(true);
-        }
 
     }
 
@@ -106,8 +97,13 @@ public class Restaurants extends Fragment implements RESAdapter.onClickListItem 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_hotels, container, false);
-        mRestaurants = new ArrayList<RestaurantClass>();
-        loadData();
+        RecyclerView recyclerView;
+        RecyclerView.LayoutManager layoutManager;
+        RESAdapter recyclerViewAdapter;
+        if (mRestaurants == null) {
+            mRestaurants = new ArrayList<RestaurantClass>();
+            loadData();
+        }
         recyclerView = rootView.findViewById(R.id.rv_hotels);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);

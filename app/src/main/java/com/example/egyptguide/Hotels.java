@@ -22,7 +22,6 @@ import java.util.ArrayList;
  */
 public class Hotels extends Fragment implements HotelAdapter.onClickListItem {
 
-   private HotelAdapter hotelAdapter;
     public static ArrayList<HotelClass> hotels;
 
     @Override
@@ -31,9 +30,11 @@ public class Hotels extends Fragment implements HotelAdapter.onClickListItem {
                 new Intent(getContext(), Details_Activity.class)
                         .putExtra(getString(R.string.current_entity), hotels.get(pos))
                         .putExtra(getString(R.string.ENTITY_TYPE), MainActivity.HOTEL)
+                        .putExtra(getString(R.string.ENTITY_POS),pos)
         );
         Toast.makeText(getContext(), getString(R.string.details), Toast.LENGTH_SHORT).show();
     }
+
     public Hotels() {
         // Required empty public constructor
     }
@@ -90,21 +91,20 @@ public class Hotels extends Fragment implements HotelAdapter.onClickListItem {
                 new int[]{R.drawable.ic_location_city_black_24dp, R.drawable.ic_explore_black_24dp},
                 getContext().getString(R.string.work_time, 9, 4),
                 getContext().getString(R.string.phone_no1)));
-        for (int i=0 ; i<hotels.size()/2;i++)
-        {
-            hotels.get(i).setmIsPreferred(true);
-        }
+
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_hotels, container, false);
+        HotelAdapter hotelAdapter;
         RecyclerView recyclerView;
         RecyclerView.LayoutManager layoutManager;
-        hotels = new ArrayList<HotelClass>();
-        loadData();
-
+        if (hotels == null) {
+            hotels = new ArrayList<HotelClass>();
+            loadData();
+        }
         recyclerView = rootView.findViewById(R.id.rv_hotels);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);

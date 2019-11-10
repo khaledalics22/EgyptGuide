@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,27 +59,114 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
                 UniversitiesClass entity = (UniversitiesClass) getIntent().getSerializableExtra(getString(R.string.current_entity));
                 tv_fees.setText(this.getResources().getString(R.string.fees, entity.getmFees()));
                 tv_fees.setVisibility(View.VISIBLE);
+                final UniversitiesClass changeable = Universities.univerisities.get(
+                        (int) getIntent().getSerializableExtra(getString(R.string.ENTITY_POS)));
+                if (changeable.ismIsPreferred())
+                    ivPreferred.setImageResource(R.drawable.star_yellow);
+                ivPreferred.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (currEntity.ismIsPreferred()) {
+                            ivPreferred.setImageResource(R.drawable.star_holo);
+                            changeable.setmIsPreferred(false);
+                            Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
+                        } else {
+                            ivPreferred.setImageResource(R.drawable.star_yellow);
+                            changeable.setmIsPreferred(true);
+                            Toast.makeText(Details_Activity.this, getString(R.string.starred), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
                 break;
             }
             case RESTAURANT: {
-                RestaurantClass entity = (RestaurantClass) getIntent().getSerializableExtra(getString(R.string.current_entity));
                 tv_fees.setVisibility(View.GONE);
+                final RestaurantClass changeable = Restaurants.mRestaurants.get(
+                        (int) getIntent().getSerializableExtra(getString(R.string.ENTITY_POS)));
+                if (changeable.ismIsPreferred())
+                    ivPreferred.setImageResource(R.drawable.star_yellow);
+                ivPreferred.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (currEntity.ismIsPreferred()) {
+                            ivPreferred.setImageResource(R.drawable.star_holo);
+                            changeable.setmIsPreferred(false);
+                            Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
+                        } else {
+                            ivPreferred.setImageResource(R.drawable.star_yellow);
+                            changeable.setmIsPreferred(true);
+                            Toast.makeText(Details_Activity.this, getString(R.string.starred), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
                 break;
             }
             case ENTERTAINMENT: {
-                EntertainmentClass entity = (EntertainmentClass) getIntent().getSerializableExtra(getString(R.string.current_entity));
                 tv_fees.setVisibility(View.GONE);
+                final EntertainmentClass changeable = Entertainments.entertainments.get(
+                        (int) (getIntent().getSerializableExtra(getString(R.string.ENTITY_POS))));
+                if (changeable.ismIsPreferred())
+                    ivPreferred.setImageResource(R.drawable.star_yellow);
+                ivPreferred.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (currEntity.ismIsPreferred()) {
+                            ivPreferred.setImageResource(R.drawable.star_holo);
+                            changeable.setmIsPreferred(false);
+                            Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
+                        } else {
+                            ivPreferred.setImageResource(R.drawable.star_yellow);
+                            changeable.setmIsPreferred(true);
+                            Toast.makeText(Details_Activity.this, getString(R.string.starred), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
                 break;
             }
             case BANK: {
-                BankClass entity = (BankClass) getIntent().getSerializableExtra(getString(R.string.current_entity));
                 tv_fees.setVisibility(View.GONE);
+                final BankClass changeable = Banks.Banks.get(
+                        (int) getIntent().getSerializableExtra(getString(R.string.ENTITY_POS)));
+                if (changeable.ismIsPreferred())
+                    ivPreferred.setImageResource(R.drawable.star_yellow);
+                ivPreferred.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (currEntity.ismIsPreferred()) {
+                            ivPreferred.setImageResource(R.drawable.star_holo);
+                            changeable.setmIsPreferred(false);
+                            Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
+                        } else {
+                            ivPreferred.setImageResource(R.drawable.star_yellow);
+                            changeable.setmIsPreferred(true);
+                            Toast.makeText(Details_Activity.this, getString(R.string.starred), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
                 break;
             }
             default: {
-                HotelClass entity = (HotelClass) getIntent().getSerializableExtra(getString(R.string.current_entity));
+                final HotelClass entity = (HotelClass) getIntent().getSerializableExtra(getString(R.string.current_entity));
                 tv_fees.setText(this.getResources().getString(R.string.price_per_day, entity.getmPricePerDay()));
                 tv_fees.setVisibility(View.VISIBLE);
+                final HotelClass changeable = Hotels.hotels.get(
+                        (int) getIntent().getSerializableExtra(getString(R.string.ENTITY_POS)));
+                if (changeable.ismIsPreferred())
+                    ivPreferred.setImageResource(R.drawable.star_yellow);
+                ivPreferred.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (currEntity.ismIsPreferred()) {
+                            ivPreferred.setImageResource(R.drawable.star_holo);
+                            changeable.setmIsPreferred(false);
+                            Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
+                        } else {
+                            ivPreferred.setImageResource(R.drawable.star_yellow);
+                            changeable.setmIsPreferred(true);
+                            Toast.makeText(Details_Activity.this, getString(R.string.starred), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
                 break;
             }
         }
@@ -111,28 +199,17 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
         btnOpenMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String EntityName =currEntity.getmName();
-                Intent intent=new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("google.navigation:q="+EntityName+",+Egypt"));
-                if(intent.resolveActivity(getPackageManager())!=null){
+                String EntityName = currEntity.getmName();
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("google.navigation:q=" + EntityName + ",+Egypt"));
+                if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivity(intent);
                 }
             }
         });
 
         //this is supposed to store the state of the instance in database or the host server
-        ivPreferred.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (currEntity.ismIsPreferred()) {
-                    ivPreferred.setImageResource(R.drawable.star_holo);
-                    currEntity.setmIsPreferred(false);
-                } else {
-                    ivPreferred.setImageResource(R.drawable.star_yellow);
-                    currEntity.setmIsPreferred(true);
-                }
-            }
-        });
+
         iBtn_reamMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,4 +240,5 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
         recyclerView = findViewById(R.id.rv_content_pictures);
 
     }
+
 }

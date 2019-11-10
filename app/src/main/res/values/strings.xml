@@ -90,4 +90,7 @@
     <string name="preferred">Starred</string>
     <string name="communicate">Communicate</string>
     <string name="search">Search</string>
+    <string name="ENTITY_POS">ENTITY_POS</string>
+    <string name="star_removed">star removed</string>
+    <string name="starred">Starred</string>
 </resources>

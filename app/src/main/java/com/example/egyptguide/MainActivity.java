@@ -8,8 +8,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.navigation.NavigationView;
@@ -25,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public final static int FAMOUS = 5;
     public final static int STARRED = 6;
     private NavigationView navigationView;
+    private ViewPager viewPager;
+    private data mData;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +39,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         toolbar.setTitle(getResources().getString(R.string.app_name));
         setSupportActionBar(toolbar);
-        ViewPager viewPager;
+        mData = new data(this);
+        mData.loadData();
         viewPager = findViewById(R.id.container);
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), this, 5);
         viewPager.setAdapter(fragmentAdapter);
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration mAppBarConfiguration;
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.starred,
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.starred, R.id.general,
                 R.id.feedback)
                 .setDrawerLayout(drawer)
                 .build();
@@ -54,9 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        MenuItem item = navigationView.getCheckedItem();
-        if (item != null)
-            item.setChecked(false);
+        navigationView.setCheckedItem(R.id.general);
     }
 
     @Override
@@ -64,7 +68,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = menuItem.getItemId();
         switch (id) {
             case R.id.starred:
-                startActivity(new Intent(MainActivity.this, Starred.class));
+                mData.loadStarred();
+                viewPager.getAdapter().notifyDataSetChanged();
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.general:
+                mData.loadData();
+                viewPager.getAdapter().notifyDataSetChanged();
+                drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.feedback:
                 Intent email = new Intent(Intent.ACTION_SEND);

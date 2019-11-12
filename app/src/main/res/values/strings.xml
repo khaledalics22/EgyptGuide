@@ -4,43 +4,15 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="settings">Settings</string>
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="details">Details</string>
-    <string name="caption">here, is the caption</string>
-    <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="have_problem">I have a problem with: </string>
     <string name="feedback">Feedback</string>
-    <string name="cities">Cities</string>
-    <string name="map">Map</string>
-    <string name="nearest_cities">Nearest Cities</string>
-    <string name="type_of_tourism">type_of_tourism</string>
-    <string name="enjoy_egypt">Enjoy Egypt</string>
     <string name="take_me">Take me there</string>
-    <string name="preview">Previews</string>
-    <string name="sights">Sights</string>
     <string name="contents">Contents</string>
-    <string name="comment">Comment</string>
     <string name="read_more_arrow">Read_more_arrow</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="sight_name">Sight Name</string>
     <string name="egypt">Egypt,</string>
     <string name="cairo">Cairo</string>
     <string name="entity">entity</string>
@@ -86,4 +58,18 @@
     <string name="star_removed">star removed</string>
     <string name="starred">Starred</string>
     <string name="egypt_guide">E G Y P T GUIDE</string>
+    <string name="error">error</string>
+    <string name="Tag">Tag</string>
+    <string name="categories">Categories</string>
+    <string name="email">Egypt.Guide.com.TEST</string>
+    <string name="american_uni">american university</string>
+    <string name="talaat_harp">talaat harp bank</string>
+    <string name="el_salam">el salam hotel</string>
+    <string name="caio_hotel">cairo hotel</string>
+    <string name="four_saeson">four seasons hotel</string>
+    <string name="el_konafa">El konafa 9</string>
+    <string name="revolving_restaurant">Revolving Restaurants</string>
+    <string name="cinema_rivoli">Cineam Revoli</string>
+    <string name="porto_cairo">Cairo porto Cinema</string>
+    <string name="No_Starred">No Starred</string>
 </resources>

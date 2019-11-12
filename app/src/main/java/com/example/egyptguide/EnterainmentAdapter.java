@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class EnterainmentAdapter extends RecyclerView.Adapter<EnterainmentAdapter.ViewHolder> {
     private ArrayList<EntertainmentClass> entertainments;
-
     private onClickListItem clickListItem;
 
     public interface onClickListItem {

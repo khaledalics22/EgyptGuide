@@ -46,128 +46,46 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setTitle(R.string.details);
         }
-        currEntity = (Entity) getIntent().getSerializableExtra(getString(R.string.current_entity));
         casheViews();
-        setRecyclerView();
-        setListeners();
-        attachViews();
         int TYPE = Integer.parseInt(getIntent().getSerializableExtra(getString(R.string.ENTITY_TYPE)).toString());
+        int pos = Integer.parseInt(getIntent().getSerializableExtra(getString(R.string.ENTITY_POS)).toString());
         switch (TYPE) {
             case UNIVERSITY: {
-                UniversitiesClass entity = (UniversitiesClass) getIntent().getSerializableExtra(getString(R.string.current_entity));
-                tv_fees.setText(this.getResources().getString(R.string.fees, entity.getmFees()));
+                final UniversitiesClass currUni = data.univerisities.get(pos);
+                currEntity = currUni;
+                tv_fees.setText(this.getResources().getString(R.string.fees, currUni.getmFees()));
                 tv_fees.setVisibility(View.VISIBLE);
-                final UniversitiesClass changeable = Universities.univerisities.get(
-                        (int) getIntent().getSerializableExtra(getString(R.string.ENTITY_POS)));
-                if (changeable.ismIsPreferred())
-                    ivPreferred.setImageResource(R.drawable.star_yellow);
-                ivPreferred.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (changeable.ismIsPreferred()) {
-                            ivPreferred.setImageResource(R.drawable.star_holo);
-                            changeable.setmIsPreferred(false);
-                            Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
-                        } else {
-                            ivPreferred.setImageResource(R.drawable.star_yellow);
-                            changeable.setmIsPreferred(true);
-                            Toast.makeText(Details_Activity.this, getString(R.string.starred), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
                 break;
             }
             case RESTAURANT: {
                 tv_fees.setVisibility(View.GONE);
-                final RestaurantClass changeable = Restaurants.mRestaurants.get(
-                        (int) getIntent().getSerializableExtra(getString(R.string.ENTITY_POS)));
-                if (changeable.ismIsPreferred())
+                final RestaurantClass currRES = data.mRestaurants.get(pos);
+                currEntity = currRES;
+                if (currRES.ismIsPreferred())
                     ivPreferred.setImageResource(R.drawable.star_yellow);
-                ivPreferred.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (changeable.ismIsPreferred()) {
-                            ivPreferred.setImageResource(R.drawable.star_holo);
-                            changeable.setmIsPreferred(false);
-                            Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
-                        } else {
-                            ivPreferred.setImageResource(R.drawable.star_yellow);
-                            changeable.setmIsPreferred(true);
-                            Toast.makeText(Details_Activity.this, getString(R.string.starred), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
                 break;
             }
             case ENTERTAINMENT: {
                 tv_fees.setVisibility(View.GONE);
-                final EntertainmentClass changeable = Entertainments.entertainments.get(
-                        (int) (getIntent().getSerializableExtra(getString(R.string.ENTITY_POS))));
-                if (changeable.ismIsPreferred())
-                    ivPreferred.setImageResource(R.drawable.star_yellow);
-                ivPreferred.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (changeable.ismIsPreferred()) {
-                            ivPreferred.setImageResource(R.drawable.star_holo);
-                            changeable.setmIsPreferred(false);
-                            Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
-                        } else {
-                            ivPreferred.setImageResource(R.drawable.star_yellow);
-                            changeable.setmIsPreferred(true);
-                            Toast.makeText(Details_Activity.this, getString(R.string.starred), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                currEntity = data.entertainments.get(pos);
                 break;
             }
             case BANK: {
                 tv_fees.setVisibility(View.GONE);
-                final BankClass changeable = Banks.Banks.get(
-                        (int) getIntent().getSerializableExtra(getString(R.string.ENTITY_POS)));
-                if (changeable.ismIsPreferred())
-                    ivPreferred.setImageResource(R.drawable.star_yellow);
-                ivPreferred.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (changeable.ismIsPreferred()) {
-                            ivPreferred.setImageResource(R.drawable.star_holo);
-                            changeable.setmIsPreferred(false);
-                            Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
-                        } else {
-                            ivPreferred.setImageResource(R.drawable.star_yellow);
-                            changeable.setmIsPreferred(true);
-                            Toast.makeText(Details_Activity.this, getString(R.string.starred), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                currEntity = data.Banks.get(pos);
                 break;
             }
             default: {
-                final HotelClass entity = (HotelClass) getIntent().getSerializableExtra(getString(R.string.current_entity));
-                tv_fees.setText(this.getResources().getString(R.string.price_per_day, entity.getmPricePerDay()));
+                final HotelClass currHOTEL = (HotelClass) data.hotels.get(pos);
+                currEntity = currHOTEL;
+                tv_fees.setText(this.getResources().getString(R.string.price_per_day, currHOTEL.getmPricePerDay()));
                 tv_fees.setVisibility(View.VISIBLE);
-                final HotelClass changeable = Hotels.hotels.get(
-                        (int) getIntent().getSerializableExtra(getString(R.string.ENTITY_POS)));
-                if (changeable.ismIsPreferred())
-                    ivPreferred.setImageResource(R.drawable.star_yellow);
-                ivPreferred.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (changeable.ismIsPreferred()) {
-                            ivPreferred.setImageResource(R.drawable.star_holo);
-                            changeable.setmIsPreferred(false);
-                            Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
-                        } else {
-                            ivPreferred.setImageResource(R.drawable.star_yellow);
-                            changeable.setmIsPreferred(true);
-                            Toast.makeText(Details_Activity.this, getString(R.string.starred), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
                 break;
             }
         }
+        attachViews();
+        setRecyclerView();
+        setListeners();
     }
 
     private void setRecyclerView() {
@@ -179,7 +97,6 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
     }
 
     private void attachViews() {
-        currEntity = (Entity) getIntent().getSerializableExtra(getString(R.string.current_entity));
         iv_main_image.setImageResource(currEntity.getmImageResources()[0]);
         tv_EntityName.setText(currEntity.getmName());
         tv_Location.setText(currEntity.getmLocation());
@@ -205,7 +122,6 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
                 }
             }
         });
-
         iBtn_reamMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -217,6 +133,20 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
                     iBtn_reamMore.setImageResource(R.drawable.ic_keyboard_arrow_down_black_24dp);
                     tv_details.setMaxLines(R.dimen.minLines);
                     shown = false;
+                }
+            }
+        });
+        ivPreferred.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (currEntity.ismIsPreferred()) {
+                    ivPreferred.setImageResource(R.drawable.star_holo);
+                    currEntity.setmIsPreferred(false);
+                    Toast.makeText(Details_Activity.this, getString(R.string.star_removed), Toast.LENGTH_SHORT).show();
+                } else {
+                    ivPreferred.setImageResource(R.drawable.star_yellow);
+                    currEntity.setmIsPreferred(true);
+                    Toast.makeText(Details_Activity.this, getString(R.string.starred), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -234,5 +164,15 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
         iBtn_reamMore = findViewById(R.id.read_more_arrow);
         btnOpenMap = findViewById(R.id.btn_take_me_there);
         recyclerView = findViewById(R.id.rv_content_pictures);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (currEntity.ismIsPreferred()) {
+            ivPreferred.setImageResource(R.drawable.star_yellow);
+        } else {
+            ivPreferred.setImageResource(R.drawable.star_holo);
+        }
     }
 }

@@ -16,6 +16,7 @@ public class RESAdapter extends RecyclerView.Adapter<RESAdapter.ViewHolder> {
     private ArrayList<RestaurantClass> Restaurants;
     private Context mContext;
     private onClickListItem clickListItem;
+
     public interface onClickListItem {
         void onClickListItemHandler(int pos);
     }

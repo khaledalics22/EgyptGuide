@@ -4,6 +4,10 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/general"
+            android:icon="@drawable/ic_location_city_black_24dp"
+            android:title="@string/General" />
+        <item
             android:id="@+id/starred"
             android:icon="@drawable/star_yellow"
             android:title="@string/starred" />

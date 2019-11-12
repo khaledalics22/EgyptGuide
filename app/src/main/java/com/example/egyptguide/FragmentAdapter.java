@@ -29,6 +29,11 @@ public class FragmentAdapter extends FragmentPagerAdapter {
         mFragNum = fragNum;
     }
 
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return POSITION_NONE;
+    }
+
     @NonNull
     @Override
     public Fragment getItem(int position) {

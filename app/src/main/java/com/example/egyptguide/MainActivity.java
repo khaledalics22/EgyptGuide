@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.general:
 
                 // reload all data and notify adapter
+                mData.clearData();
                 mData.loadData();
                 viewPager.getAdapter().notifyDataSetChanged();
                 drawer.closeDrawer(GravityCompat.START);

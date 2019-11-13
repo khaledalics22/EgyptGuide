@@ -21,14 +21,26 @@ public class data {
     }
 
     public void loadData() {
-        loadEntertainmentsData();
-        loadBankData();
-        loadHotelData();
-        loadRestaurantData();
-        loadUniversitiesData();
+        if (Banks == null || entertainments == null
+                || hotels == null || univerisities == null) {
+            loadEntertainmentsData();
+            loadBankData();
+            loadHotelData();
+            loadRestaurantData();
+            loadUniversitiesData();
+        }
+    }
+
+    public void clearData() {
+        entertainments = null;
+        hotels = null;
+        Banks = null;
+        univerisities = null;
+        mRestaurants = null;
     }
 
     public void loadStarred() {
+        //this method will behave better when we define database
         for (int i = 0; i < Banks.size(); i++) {
             if (!Banks.get(i).ismIsPreferred()) {
                 Banks.remove(Banks.get(i));

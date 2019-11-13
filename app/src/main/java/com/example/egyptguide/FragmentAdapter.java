@@ -31,6 +31,8 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getItemPosition(@NonNull Object object) {
+
+        // return POSITION_NONE to update all fragments every it's notified
         return POSITION_NONE;
     }
 

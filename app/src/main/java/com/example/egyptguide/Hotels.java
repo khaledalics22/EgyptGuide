@@ -22,6 +22,8 @@ public class Hotels extends Fragment implements HotelAdapter.onClickListItem {
 
     @Override
     public void onClickListItemHandler(int pos) {
+
+        // start detail activity and send position and type of Entity in Intent
         getActivity().startActivity(
                 new Intent(getContext(), Details_Activity.class)
                         .putExtra(getString(R.string.ENTITY_TYPE), MainActivity.HOTEL)

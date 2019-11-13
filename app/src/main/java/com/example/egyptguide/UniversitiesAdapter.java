@@ -24,7 +24,7 @@ public class UniversitiesAdapter extends RecyclerView.Adapter<UniversitiesAdapte
     public UniversitiesAdapter(onClickListItem listener, Context context, ArrayList<UniversitiesClass> contents) {
         this.universities = contents;
         clickListItem = listener;
-        mContext = (Context) context;
+        mContext = context;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -32,7 +32,7 @@ public class UniversitiesAdapter extends RecyclerView.Adapter<UniversitiesAdapte
         private TextView tvLocation;
         private TextView tvName;
         private TextView tvFees;
-        private TextView tv_not_starred;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivEntity = itemView.findViewById(R.id.iv_entity_icon);

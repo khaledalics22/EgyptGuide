@@ -2,6 +2,9 @@ package com.example.egyptguide;
 
 import java.io.Serializable;
 
+/**
+ * this Class Entity is a parent class of all Entities
+ */
 public class Entity implements Serializable {
     private String mName;
     private String mDescription;

@@ -17,13 +17,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.Serializable;
 
+/**
+ * the Detail_Activity displays the entity's details
+ */
 public class Details_Activity extends AppCompatActivity implements Serializable {
-    public final static int UNIVERSITY = 0;
-    public final static int ENTERTAINMENT = 1;
-    public final static int BANK = 2;
-    public final static int HOTEL = 3;
-    public final static int RESTAURANT = 4;
-    private boolean shown = false;
+    public final static int UNIVERSITY = 0;                                     // int number refer to type
+    public final static int ENTERTAINMENT = 1;                                  // int number refer to type
+    public final static int BANK = 2;                                           // int number refer to type
+    public final static int RESTAURANT = 4;                                     // int number refer to type
+    private boolean shown = false;                                              // details TextView is extended or not
     private TextView tv_EntityName;
     private TextView tv_Location;
     private ImageView iv_main_image;
@@ -47,8 +49,14 @@ public class Details_Activity extends AppCompatActivity implements Serializable 
             actionBar.setTitle(R.string.details);
         }
         casheViews();
+
+        // get type od entity selected to be shown
         int TYPE = Integer.parseInt(getIntent().getSerializableExtra(getString(R.string.ENTITY_TYPE)).toString());
+
+        // get position of entity selected in listArray
         int pos = Integer.parseInt(getIntent().getSerializableExtra(getString(R.string.ENTITY_POS)).toString());
+
+        // behave according to type of entity
         switch (TYPE) {
             case UNIVERSITY: {
                 final UniversitiesClass currUni = data.univerisities.get(pos);

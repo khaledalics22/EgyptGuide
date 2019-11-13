@@ -19,21 +19,19 @@ import androidx.recyclerview.widget.RecyclerView;
  * A simple {@link Fragment} subclass.
  */
 public class Universities extends Fragment implements UniversitiesAdapter.onClickListItem {
-
-    private data mData;
-
     public Universities() {// Required empty public constructor
     }
 
     @Override
     public void onClickListItemHandler(int pos) {
+
+        // start detail activity and send position and type of Entity in Intent
         getContext().startActivity(
                 new Intent(getContext(), Details_Activity.class)
                         .putExtra(getString(R.string.ENTITY_TYPE), MainActivity.UNIVERSITY)
                         .putExtra(getString(R.string.ENTITY_POS), pos));
         Toast.makeText(getContext(), getString(R.string.details), Toast.LENGTH_SHORT).show();
     }
-
 
     @Nullable
     @Override

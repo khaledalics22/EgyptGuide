@@ -1,6 +1,5 @@
 package com.example.egyptguide;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 
 public class RESAdapter extends RecyclerView.Adapter<RESAdapter.ViewHolder> {
     private ArrayList<RestaurantClass> Restaurants;
-    private Context mContext;
     private onClickListItem clickListItem;
 
     public interface onClickListItem {
@@ -23,7 +21,7 @@ public class RESAdapter extends RecyclerView.Adapter<RESAdapter.ViewHolder> {
 
     public RESAdapter(onClickListItem context, ArrayList<RestaurantClass> contents) {
         this.Restaurants = contents;
-        clickListItem = (onClickListItem) context;
+        clickListItem = context;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

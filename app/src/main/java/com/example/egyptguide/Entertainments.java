@@ -23,6 +23,8 @@ public class Entertainments extends Fragment implements EnterainmentAdapter.onCl
 
     @Override
     public void onClickListItemHandler(int pos) {
+
+        // start detail activity and send position and type of Entity in Intent
         getActivity().startActivity(
                 new Intent(getContext(), Details_Activity.class)
                         .putExtra(getString(R.string.ENTITY_TYPE), MainActivity.ENTERTAINMENT)
@@ -33,7 +35,6 @@ public class Entertainments extends Fragment implements EnterainmentAdapter.onCl
 
     public Entertainments() {// Required empty public constructor
     }
-
 
     @Nullable
     @Override

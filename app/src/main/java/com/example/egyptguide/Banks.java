@@ -21,12 +21,13 @@ import androidx.recyclerview.widget.RecyclerView;
 public class Banks extends Fragment implements BankAdapter.onClickListItem {
     private data mData;
 
-    public Banks() {
-        // Required empty public constructor
+    public Banks() {// Required empty public constructor
     }
 
     @Override
     public void onClickListItemHandler(int pos) {
+
+        // start detail activity and send position and type of Entity in Intent
         getActivity().startActivity(
                 new Intent(getContext(), Details_Activity.class)
                         .putExtra(getString(R.string.ENTITY_TYPE), MainActivity.BANK)

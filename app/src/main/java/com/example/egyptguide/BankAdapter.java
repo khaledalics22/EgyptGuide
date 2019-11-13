@@ -21,7 +21,7 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.ViewHolder> {
 
     public BankAdapter(onClickListItem context, ArrayList<BankClass> contents) {
         this.banks = contents;
-        clickListItem = (onClickListItem) context;
+        clickListItem = context;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

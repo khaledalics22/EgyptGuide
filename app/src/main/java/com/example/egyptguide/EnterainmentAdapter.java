@@ -21,7 +21,7 @@ public class EnterainmentAdapter extends RecyclerView.Adapter<EnterainmentAdapte
 
     public EnterainmentAdapter(onClickListItem context, ArrayList<EntertainmentClass> contents) {
         this.entertainments = contents;
-        clickListItem = (onClickListItem) context;
+        clickListItem = context;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

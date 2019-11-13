@@ -19,10 +19,10 @@ import androidx.recyclerview.widget.RecyclerView;
  * A simple {@link Fragment} subclass.
  */
 public class Restaurants extends Fragment implements RESAdapter.onClickListItem {
-    private data mData;
-
     @Override
     public void onClickListItemHandler(int pos) {
+
+        // start detail activity and send position and type of Entity in Intent
         getActivity().startActivity(
                 new Intent(getContext(), Details_Activity.class)
                         .putExtra(getString(R.string.ENTITY_TYPE), MainActivity.RESTAURANT)
@@ -37,11 +37,8 @@ public class Restaurants extends Fragment implements RESAdapter.onClickListItem 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        data mData;
         View rootView = inflater.inflate(R.layout.fragment_hotels, container, false);
-        if (data.mRestaurants == null) {
-            mData = new data(getContext());
-            mData.loadRestaurantData();
-        }
         RecyclerView recyclerView;
         RecyclerView.LayoutManager layoutManager;
         RESAdapter recyclerViewAdapter;
